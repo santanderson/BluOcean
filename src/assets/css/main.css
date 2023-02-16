@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,600&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(4, 31, 57);
+  font-family: "Poppins", sans-serif;
+}
+body header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  gap: 40px;
+  height: 100%;
+  width: 241px;
+  background-color: #01080E;
+  color: white;
+  padding: 40px 20px;
+}
+body header .logo {
+  font-size: 35px;
+  font-weight: 600;
+}
+body header nav {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 60px;
+}
+body header nav ul {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+}
+body header nav ul a {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+body header nav ul a:hover {
+  color: #093764;
+}
+body main {
+  margin-left: 241px;
+  padding: 100px 40px;
+}
+body main h1 {
+  color: white;
+  padding-bottom: 20px;
+}
+body main div.songsContainer {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+body main div.songsContainer .song {
+  display: flex;
+  position: relative;
+  flex-flow: column nowrap;
+  gap: 20px;
+  background-color: #001224;
+  padding: 12px;
+  width: 190px;
+  height: 260px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+}
+body main div.songsContainer .song a {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 20px;
+  color: white;
+  text-decoration: none;
+}
+body main div.songsContainer .song div {
+  width: 100%;
+  height: 180px;
+  background-color: #010c24;
+}
+body main div.songsContainer .song div img {
+  color: transparent;
+}
+body main div.songsContainer .song h2 {
+  font-size: 16px;
+}
+body main div.songsContainer .song button {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  color: rgb(255, 51, 0);
+  background: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+body main form,
+body main .addMusic {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 20px;
+}
+body main form label,
+body main .addMusic label {
+  color: white;
+  font-weight: 500;
+}
+body main form input,
+body main form button,
+body main .addMusic input,
+body main .addMusic button {
+  padding: 7px;
+  font-size: 19px;
+  width: 400px;
+  background-color: rgb(4, 31, 57);
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+}
+body main form button,
+body main .addMusic button {
+  border: none;
+  background-color: #093764;
+  border-radius: 5px;
+  cursor: pointer;
+}
+body main form button:active,
+body main .addMusic button:active {
+  background-color: rgb(4, 31, 57);
+}/*# sourceMappingURL=main.css.map */
