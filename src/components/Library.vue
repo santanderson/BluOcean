@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import router from '@/router'
+import DeleteIcon from './icons/DeleteIcon.vue';
 
 const props = defineProps({
     songsLibrary: Object,
@@ -13,7 +14,7 @@ const data = {
 }
 
 async function deleteSong(e) {
-    const songId = e.target.parentNode.children[0].id;
+    const songId = e.target.parentNode.parentNode.children[0].id;
     console.log(songId)
     
     data.userId = props.userStatus.userId;
@@ -57,7 +58,7 @@ async function deleteSong(e) {
                     <div></div>
                     <h2>{{ song.name }}</h2>
                 </a>
-                <button @click="deleteSong">Delete</button>
+                <DeleteIcon @click="deleteSong"/>
             </div>
         </div>
     </main>

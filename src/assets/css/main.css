@@ -44,9 +44,19 @@ body header nav ul a {
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 15px;
 }
 body header nav ul a:hover {
   color: #093764;
+}
+body header nav ul svg {
+  width: 30px;
+  height: 30px;
+  align-self: baseline;
 }
 body main {
   margin-left: 241px;
@@ -93,15 +103,15 @@ body main div.songsContainer .song div img {
 body main div.songsContainer .song h2 {
   font-size: 16px;
 }
-body main div.songsContainer .song button {
+body main div.songsContainer .song svg {
   position: absolute;
   right: 0;
   top: 5px;
+  width: 20px;
+  height: 20px;
   color: rgb(255, 51, 0);
-  background: transparent;
-  border: none;
-  padding: 10px;
   cursor: pointer;
+  margin: 10px;
 }
 body main form,
 body main .addMusic {
