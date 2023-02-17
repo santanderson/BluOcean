@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import Messages from './Messages.vue';
+import FlashMessage from './FlashMessage.vue';
 import { reactive } from 'vue';
 import router from '@/router'
 
@@ -19,6 +19,8 @@ const data = reactive({
 
 async function addMusic(e) {
     e.preventDefault();
+
+    if(!data.name || !data.url) return
     data.songUserId = props.userStatus.userId;
     console.log(data);
     fetch(`http://localhost:3000/song/`,
@@ -53,7 +55,7 @@ async function addMusic(e) {
     <main>
         <h1>Add a song</h1>
 
-        <Messages v-if="!props.userStatus.isLoged" msg="Log-in Before!"/>
+        <FlashMessage v-if="!props.userStatus.isLoged" msg="Log-in Before!" url="login"/>
 
         <form v-else>
             <div class="addMusic">

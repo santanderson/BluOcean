@@ -15,7 +15,9 @@ const data = reactive({
     confirmpassword: ''
 })
 
-async function onSub() {
+async function onSub(e) {
+    e.preventDefault();
+
     fetch(`http://localhost:3000/auth/register`,
         {
             method: 'POST',
@@ -27,7 +29,7 @@ async function onSub() {
         .then(res => {
             if(res.status !== 201) {
                 const obj = res.json().then( res => {
-                console.log(res)
+                window.alert(res.msg)
             })
             } else{
                 const obj = res.json().then(res => {
@@ -49,7 +51,7 @@ async function onSub() {
             <input type="email" placeholder="E-mail" v-model="data.email" />
             <input type="password" placeholder="Password" v-model="data.password" />
             <input type="confirm password" placeholder="Confirm Password" v-model="data.confirmpassword" />
-            <button type="button" @click="onSub">register</button>
+            <button @click="onSub">register</button>
         </form>
     </main>
 </template>

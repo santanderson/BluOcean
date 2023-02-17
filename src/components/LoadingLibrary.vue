@@ -1,5 +1,6 @@
 <script setup>
 import router from '@/router'
+import FlashMessage from './FlashMessage.vue';
 
 const props = defineProps({
     songsLibrary: Array,
@@ -7,6 +8,8 @@ const props = defineProps({
 })
 
 async function getter () {
+
+    if(!props.userStatus.isLoged) return
     const info = {
         userId: props.userStatus.userId
     }
@@ -40,3 +43,7 @@ async function getter () {
 getter();
 
 </script>
+
+<template>
+    <FlashMessage v-if="!props.userStatus.isLoged" msg="Please, Log-in Before!" url="login"/>
+</template>

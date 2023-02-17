@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, render } from 'vue';
 import router from '@/router'
 
 const props = defineProps({
@@ -13,7 +13,9 @@ const data = reactive({
     password: ''
 })
 
-async function onSub() {
+async function onSub(e) {
+    e.preventDefault();
+
     fetch(`http://localhost:3000/auth/login`,
         {
             method: 'POST',
@@ -25,7 +27,7 @@ async function onSub() {
         .then(res => {
             if(res.status !== 200) {
                 const obj = res.json().then( res => {
-                console.log(res)
+                    window.alert(res.msg)
             })
             } else{
                 const obj = res.json().then(res => {
@@ -46,6 +48,7 @@ async function login() {
         }).then(res => {
             if (res.status !== 200) {
                 const obj = res.json().then( res => {
+
                 console.log(res)
             })
             } else {
@@ -70,8 +73,9 @@ async function login() {
 
         <form>
             <input type="email" placeholder="E-mail" v-model="data.email" />
+            <FlashMessage v-if="!data.email" msg="O campo email é obrigatório!"/>
             <input type="password" placeholder="Password" v-model="data.password" />
-            <button type="button" @click="onSub">login</button>
+            <button @click="onSub">login</button>
         </form>
     </main>
 </template>
