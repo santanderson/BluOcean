@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import Messages from './Messages.vue';
 import { reactive } from 'vue';
 import router from '@/router'
 
@@ -52,7 +53,9 @@ async function addMusic(e) {
     <main>
         <h1>Add a song</h1>
 
-        <form>
+        <Messages v-if="!props.userStatus.isLoged" msg="Log-in Before!"/>
+
+        <form v-else>
             <div class="addMusic">
                 <label for="name">Name</label>
                 <input v-model="data.name" type="name" id="name" placeholder="Song Name"/>

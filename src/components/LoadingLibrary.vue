@@ -30,10 +30,11 @@ async function getter () {
                 for (const v of res) {
                     props.songsLibrary.push(v);
                 }
-                router.push('library');
             }
             )
         }
+
+        router.push('library');
     })
 }
 getter();

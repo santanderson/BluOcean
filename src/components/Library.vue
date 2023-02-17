@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import Messages from './Messages.vue';
 import router from '@/router'
 import DeleteIcon from './icons/DeleteIcon.vue';
 
@@ -14,7 +15,7 @@ const data = {
 }
 
 async function deleteSong(e) {
-    const songId = e.target.parentNode.parentNode.children[0].id;
+    const songId = e.target.parentNode.children[0].id
     console.log(songId)
     
     data.userId = props.userStatus.userId;
@@ -52,8 +53,10 @@ async function deleteSong(e) {
     <main>
         <h1>Your library</h1>
 
-        <div class="songsContainer">
-            <div class="song" v-for="song in props.songsLibrary">
+        <div v-if="props.userStatus.isLoged" class="songsContainer">
+            <Messages v-if="!props.songsLibrary[0]" msg="Your library is empty, add some music!"/>
+
+            <div v-else class="song" v-for="song in props.songsLibrary">
                 <a :id="song._id" :href="song.url" target="_blank">
                     <div></div>
                     <h2>{{ song.name }}</h2>
@@ -61,5 +64,6 @@ async function deleteSong(e) {
                 <DeleteIcon @click="deleteSong"/>
             </div>
         </div>
+        <Messages v-else msg="Log-in Before!"/>
     </main>
 </template>
