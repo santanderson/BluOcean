@@ -19,18 +19,63 @@ body header {
   gap: 40px;
   height: 100%;
   width: 241px;
-  background-color: #01080E;
   color: white;
-  padding: 40px 20px;
+  z-index: 10;
 }
 body header .logo {
+  display: none;
   font-size: 35px;
   font-weight: 600;
 }
+body header #menuButton {
+  display: flex;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 20;
+  left: 20;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin: 30px 20px;
+}
+body header #menuButton #hamburguer {
+  border-top: 3px solid white;
+  width: 30px;
+}
+body header #menuButton #hamburguer::after, body header #menuButton #hamburguer::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin-top: 7px;
+  transition: 0.4s;
+}
+body header #menuButton.active #hamburguer {
+  border-top-color: transparent;
+}
+body header #menuButton.active #hamburguer::before {
+  transform: rotate(135deg);
+}
+body header #menuButton.active #hamburguer::after {
+  transform: rotate(-135deg);
+  margin-top: -4px;
+}
 body header nav {
   display: flex;
+  visibility: hidden;
   flex-flow: column nowrap;
   gap: 60px;
+  background-color: #01080E;
+  height: 100%;
+  width: 0px;
+  padding: 40px 20px;
+  transition: 0.3s;
+  overflow-x: hidden;
+}
+body header nav ul.firstUl {
+  margin-top: 93px;
 }
 body header nav ul {
   display: flex;
@@ -58,19 +103,27 @@ body header nav ul svg {
   height: 30px;
   align-self: baseline;
 }
+body header nav.active {
+  transition: 0.3s;
+  width: 241px;
+  visibility: visible;
+}
 body main {
-  margin-left: 241px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
   padding: 100px 40px;
+  z-index: 9;
 }
 body main h1 {
   color: white;
   padding-bottom: 20px;
 }
 body main div.songsContainer {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 40px;
 }
 body main div.songsContainer .song {
   display: flex;
@@ -147,4 +200,27 @@ body main .addMusic button {
 body main form button:active,
 body main .addMusic button:active {
   background-color: rgb(4, 31, 57);
+}
+@media (min-width: 1170px) {
+  body header .logo {
+    display: block;
+  }
+  body header #menuButton {
+    display: none;
+  }
+  body header nav {
+    visibility: visible;
+    width: 241px;
+  }
+  body header nav ul.firstUl {
+    margin: 0;
+  }
+  body main {
+    margin-left: 241px;
+    align-items: start;
+    justify-content: start;
+  }
+  body main div.songsContainer {
+    justify-content: start;
+  }
 }/*# sourceMappingURL=main.css.map */
