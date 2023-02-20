@@ -19,10 +19,10 @@ const data = reactive({
 
 async function addMusic(e) {
     e.preventDefault();
-
-    if(!data.name || !data.url) return
     data.songUserId = props.userStatus.userId;
-    console.log(data);
+
+    if(!data.name || !data.url) return window.alert('Fill all the fields!')
+
     fetch(`http://localhost:3000/song/`,
         {
             method: 'POST',
@@ -41,7 +41,6 @@ async function addMusic(e) {
             } else {
                 const obj = res.json().then(res => {
 
-                        console.log(res);
                         router.push('loadingLibrary')
                 }
                 )

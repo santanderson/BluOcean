@@ -5,6 +5,10 @@ const SongsController = {
     create: async (req, res) => {
         const {name, url, songUserId} = req.body
 
+        if(!name) return res.status(500).json({ message: 'Fill in the name field'})
+
+        if(!url) return res.status(500).json({ message: 'Fill in the url field'})
+
         const song = {
             name,
             url,
